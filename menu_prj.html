@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Page</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  #FFF8E7;
+            color: #333;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: #172445;
+            padding: 15px 30px; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-title {
+            color: #FEA116;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 0;
+            font-family: Cambria, Cochin, Georgia, Times, 
+            'Times New Roman', serif;
+            font-style: oblique;
+        }
+
+        .nav-center {
+            flex-grow: 1; /* Permet aux liens de s'étendre et d'occuper l'espace restant */
+            display: flex;
+            justify-content: center; /* Centre les liens horizontalement */
+            gap: 15px; /* Espacement entre les liens */
+        }
+
+        .nav-center a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .nav-center a:hover {
+            transform: scale(1.1);
+            color: #FEA116;
+        }
+         .welcome-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            height: 50vh;
+            background-color: #0F172B;
+            background-image: url('background3.avif'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            position: relative;
+            overflow: hidden;
+            background-blend-mode: overlay;
+        }
+        .welcome-text {
+            max-width: 50%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 
+            'Trebuchet MS', sans-serif;
+            animation: fadeInPage 0.6s ease-in-out;
+        }
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+                transform: translateY(40px); /* Décalé vers le bas */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Position normale */
+            }
+        }
+        .welcome-text h1 {
+            font-size: 3.2rem;
+            color: #ffffff;
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .menu-item {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            width: 250px;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            overflow: hidden; 
+            position: relative;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); 
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); 
+            }
+        }
+        .menu-item img {
+            max-width: 200px; 
+            max-height: 150px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease; 
+            margin-bottom: 10px;
+        }
+        .menu-item img:hover {
+            transform: scale(1.05); 
+        }
+        .menu-details h4 {
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+            color: #000; 
+            transition: color 0.3s ease; 
+        }
+        .menu-item:hover h4 {
+            color: #FEA116; 
+        }
+        .menu-details .price {
+            font-size: 1rem;
+            color: #5F6A6A; 
+            margin-bottom: 5px;
+        }
+        .menu-details p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #5F6A6A; 
+            opacity: 0;
+            transform: translateY(10px); 
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-item:hover .menu-details p {
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        footer {
+            background: linear-gradient(140deg, #0F172B, #192648); /* Couleur de fond dégradée */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 50px 50px 0 0;
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px); /* Décalé vers le bas */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Position normale */
+            }
+        }
+        /* Conteneur principal du footer */
+        .footer-container {
+            display: flex;
+            justify-content: space-around; /* Espace entre les colonnes */
+            align-items: flex-start; /* Aligne les colonnes en haut */
+            flex-wrap: wrap; /* Permet le retour à la ligne sur petits écrans */
+            margin-bottom: 20px;
+        }
+
+        /* Section individuelle */
+        .footer-section {
+            max-width: 300px; /* Limite la largeur des sections */
+            padding: 10px 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FEA116; /* Couleur orange */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .footer-section p:hover {
+            color: #fadaa3;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Bas de page */
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #ddd; /* Ligne de séparation */
+            padding-top: 10px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span class="nav-title">LES TABLES DE K</span>
+        </div>
+        <div class="nav-center">
+            <a href="projet2.html">Accueil</a>
+            <a href="projet2.html">À Propos</a>
+            <a href="menu_prj.html">Menu</a>
+            <a href="reservation_prj.html">Réservation</a>
+            <a href="clients_prj.html">Avis des clients</a>
+            <a href="contact_prj.html">Contact</a>
+        </div>
+    </nav>
+    <header id="header">
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Notre Menu</h1>
+            </div>
+        </section>
+    </header>
+    <section id="menu">
+        <h2>Notre Menu</h2>
+        <h3 style="text-align: center; margin-top: 30px; color: #FEA116;">Pâtes</h3>
+        <div class="menu-item">
+            <img src="carbonara.jpg" alt="Pâte Carbonara">
+            <div class="menu-details">
+                <h4>Pâte Carbonara</h4>
+                <div class="price">75 Dhs</div>
+                <p>Sauce Blanche, Jambon de Dinde, Œuf</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="bolognaise.jpg" alt="Pâte Bolognaise">
+            <div class="menu-details">
+                <h4>Pâte Bolognaise</h4>
+                <div class="price">69 Dhs</div>
+                <p>Sauce bolognaise, Basilic, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="alfredo.jpg" alt="Pâte Alfredo">
+            <div class="menu-details">
+                <h4>Pâte Alfredo</h4>
+                <div class="price">65 Dhs</div>
+                <p>Sauce blanche, Poulet, Champignons, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="slmn.jpg" alt="Pâte Salmon">
+            <div class="menu-details">
+                <h4>Pâte Salmon</h4>
+                <div class="price">100 Dhs</div>
+                <p>Sauce rose, Saumon fumé, Épinards, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pasta truffe.jpg" alt="Pâte Truffe">
+            <div class="menu-details">
+                <h4>Pâte Truffe</h4>
+                <div class="price">75 Dhs</div>
+                <p>Champignons, Crème de Truffe, Parmesan, Huile de truffe</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pasta verdura.jpg" alt="Pâte Verdura">
+            <div class="menu-details">
+                <h4>Pâte Verdura</h4>
+                <div class="price">55 Dhs</div>
+                <p>Sauce pesto, champignons, courgettes, Basilic, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="cinq fromages.jpg" alt="Pâte 5 fromages">
+            <div class="menu-details">
+                <h4>Pâte 5 fromages</h4>
+                <div class="price">69 Dhs</div>
+                <p>Crème parmesan, Gorgonzola, Ricotta, chèvre, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pastamer.jpg" alt="Pâte fruit de mer">
+            <div class="menu-details">
+                <h4>Pâte Fruits De Mer</h4>
+                <div class="price">105 Dhs</div>
+                <p>Sauce Rose, Calamars, Gambas, nMoules</p>
+            </div>
+        </div>
+        <h3 style="text-align: center; margin-top: 30px; color: #FEA116;">Pizzas</h3>
+        <div class="menu-item">
+            <img src="marga 2.webp" alt="Pizza Margherita">
+            <div class="menu-details">
+                <h4>Pizza Margherita</h4>
+                <div class="price">35 Dhs</div>
+                <p>Sauce tomate, Mozzarella, Basilic</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="tun.webp" alt="Pizza Tunara">
+            <div class="menu-details">
+                <h4>Pizza Tunara</h4>
+                <div class="price">45 Dhs</div>
+                <p>Sauce tomate, Mozzarella, Oignons,Thon, Olives noires, Basilic</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="frrm.webp" alt="Pizza Fruit De Mer">
+            <div class="menu-details">
+                <h4>Pizza Fruit De Mer</h4>
+                <div class="price">95 Dhs</div>
+                <p>Sauce tomate, Mozzarella, Gambas, Calamars, Moules, Basilic, Olives</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pepp2.jpg" alt="Pizza Pepperoni">
+            <div class="menu-details">
+                <h4>Pizza Pepperoni</h4>
+                <div class="price">60 Dhs</div>
+                <p>Sauce tomate, Mozzarella, Pepperoni, Basilic, Huile d’olive, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="pizzacarne.webp" alt="Pizza Carne">
+            <div class="menu-details">
+                <h4>Pizza Carne</h4>
+                <div class="price">65 Dhs</div>
+                <p>Sauce tomate, Mozzarella, Viande hachée, Champignons, Basilic, Oignons</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="diavola.jpg" alt="Pizza diavola">
+            <div class="menu-details">
+                <h4>Pizza Diavola</h4>
+                <div class="price">65 Dhs</div>
+                <p>Sauce blanche au Gingembre, Mozzarella, Poulet,
+                     Dinde fumée, Champignons</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="mediterrania.webp" alt="Pizza mediterrania">
+            <div class="menu-details">
+                <h4>Pizza Mediterrania</h4>
+                <div class="price">75 Dhs</div>
+                <p>Sauce tomate, Pepperoni, Gorgonzola, Dinde fumée, 
+                    Mozzarella, Parmesan</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="jalapeno.webp" alt="Pizza jalapeno">
+            <div class="menu-details">
+                <h4>Pizza Jalapeno</h4>
+                <div class="price">69 Dhs</div>
+                <p>Sauce blanche, Olives noirs, Poulet, 
+                    Mozzarella, Champignons, Jalapeno</p>
+            </div>
+        </div>
+        <h3 style="text-align: center; margin-top: 30px; color: #FEA116;">Desserts</h3>
+        <div class="menu-item">
+            <img src="trms.jpg" alt="Tiramisu">
+            <div class="menu-details">
+                <h4>Tiramisu</h4>
+                <div class="price">30 Dhs</div>
+                <p>Le véritable Tiramisu au café</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="trms chn.jpg" alt="Tiramisu Chocolat Noir">
+            <div class="menu-details">
+                <h4>Tiramisu Chocolat Noir</h4>
+                <div class="price">35 Dhs</div>
+                <p>Tiramisu garnie au chocolat noir</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="trms pst.jpg" alt="Tiramisu Pistache">
+            <div class="menu-details">
+                <h4>Tiramisu Pistache</h4>
+                <div class="price">45 Dhs</div>
+                <p>Le somptueux tiramisu à la crème pistache</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="trmsntll.jpg" alt="Tiramisu Nutella">
+            <div class="menu-details">
+                <h4>Tiramisu Nutella</h4>
+                <div class="price">35 Dhs</div>
+                <p>Le somptueux tiramisu à la nutella</p>
+            </div>
+        </div>
+        <h3 style="text-align: center; margin-top: 30px; color: #FEA116;">Jus</h3>
+        <div class="menu-item">
+            <img src="jusorange.jpg" alt="jusorange">
+            <div class="menu-details">
+                <h4>Jus d'orange</h4>
+                <div class="price">20 Dhs</div>
+                <p>Un éclat d’orange pure, fraîcheur et vitalité en une gorgée.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="juscitron.jpg" alt="juscitron">
+            <div class="menu-details">
+                <h4>Jus de Citron</h4>
+                <div class="price">20 Dhs</div>
+                <p>Un concentré de fraîcheur citronnée, vibrant et naturel.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="mojito.jpg" alt="mojito">
+            <div class="menu-details">
+                <h4>Mojito Classic</h4>
+                <div class="price">27 Dhs</div>
+                <p>Citron, Menthe fraiche, Limonade, Sirop</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="mojitorouge.jpg" alt="mojitor">
+            <div class="menu-details">
+                <h4>Mojito Rouge</h4>
+                <div class="price">35 Dhs</div>
+                <p>Citron, Menthe, Limonade, fruits rouges</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="icemango.jpg" alt="mango mint">
+            <div class="menu-details">
+                <h4>Mango Mint</h4>
+                <div class="price">45 Dhs</div>
+                <p>Ice tea, purée de mangue, menthe, Citron, orange</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="avocat.jpg" alt="avocat">
+            <div class="menu-details">
+                <h4>Avocado</h4>
+                <div class="price">50 Dhs</div>
+                <p>Smoothie avocat, dattes, miel, lait</p>
+            </div>
+        </div>
+        <h3 style="text-align: center; margin-top: 30px; color: #FEA116;">Boissons</h3>
+        <div class="menu-item">
+            <img src="coca.jpg" alt="coca">
+            <div class="menu-details">
+                <h4>Coca Cola</h4>
+                <div class="price">10 Dhs</div>
+                <p>Coca Cola 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="cocazero.jpg" alt="coca0">
+            <div class="menu-details">
+                <h4>Coca Cola Zéro</h4>
+                <div class="price">10 Dhs</div>
+                <p>Coca Cola Zéro 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="hawai.jpg" alt="hawai">
+            <div class="menu-details">
+                <h4>Hawai</h4>
+                <div class="price">10 Dhs</div>
+                <p>Hawai 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="sprite.jpg" alt="sprite">
+            <div class="menu-details">
+                <h4>Sprite</h4>
+                <div class="price">10 Dhs</div>
+                <p>Sprite 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="schweppesc.jpg" alt="schweppesc">
+            <div class="menu-details">
+                <h4>Schweppes Citron</h4>
+                <div class="price">10 Dhs</div>
+                <p>Schweppes citron 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="schweppest.jpg" alt="schweppest">
+            <div class="menu-details">
+                <h4>Schweppes Tonic</h4>
+                <div class="price">10 Dhs</div>
+                <p>Schweppes Tonic 33cl</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="eau.jpg" alt="eau">
+            <div class="menu-details">
+                <h4>Sidi Ali</h4>
+                <div class="price">7 Dhs</div>
+                <p>Sidi Ali 33cl</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section contact">
+                <h3>--Contact--</h3>
+                <p>📍 Adresse : Rue Jean Jaurès, Gauthier</p>
+                <p>📞 Téléphone : +212 521092797</p>
+                <p>📧 Email : contact@restaurant.com</p>
+            </div>
+    
+            <div class="footer-section hours">
+                <h3>--Horaires--</h3>
+                <p>🕒 Lundi - Vendredi : 12h - 22h</p>
+                <p>🕒 Samedi - Dimanche : 14h - 23h</p>
+            </div>
+    
+            <div class="footer-section social">
+                <h3>--Suivez-nous--</h3>
+                <p>📷 Instagram | 📘 Facebook | 🐦 Twitter</p>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2024 Restaurant Délicieux. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

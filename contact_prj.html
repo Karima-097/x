@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  #FFF8E7;
+            color: #333;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: #172445;
+            padding: 15px 30px; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-title {
+            color: #FEA116;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 0;
+            font-family: Cambria, Cochin, Georgia, Times, 
+            'Times New Roman', serif;
+            font-style: oblique;
+        }
+
+        .nav-center {
+            flex-grow: 1; /* Permet aux liens de s'étendre et d'occuper l'espace restant */
+            display: flex;
+            justify-content: center; /* Centre les liens horizontalement */
+            gap: 15px; /* Espacement entre les liens */
+        }
+
+        .nav-center a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .nav-center a:hover {
+            transform: scale(1.1);
+            color: #FEA116;
+        }
+         .welcome-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            height: 50vh;
+            background-color: #0F172B;
+            background-image: url('background3.avif'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            position: relative;
+            overflow: hidden;
+            background-blend-mode: overlay;
+        }
+        .welcome-text {
+            max-width: 50%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 
+            'Trebuchet MS', sans-serif;
+            animation: fadeInPage 0.6s ease-in-out;
+        }
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+                transform: translateY(40px); /* Décalé vers le bas */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Position normale */
+            }
+        }
+        .welcome-text h1 {
+            font-size: 3.2rem;
+            color: #ffffff;
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+       
+        .contact-section {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .contact-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #172445;
+            margin-bottom: 20px;
+        }
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); 
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); 
+            }
+        }
+        .contact-left {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        .info-item h4 {
+            color: #FEA116;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        .info-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .info-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        .info-item a:hover {
+            text-decoration: underline;
+            color: #FEA116;
+        }
+        .map iframe {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-right {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .contact-right form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            flex: 1;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #FEA116;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #FEA116;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e58c10;
+        }
+        footer {
+            background: linear-gradient(140deg, #0F172B, #192648);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 50px 50px 0 0;
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px); 
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+        /* Conteneur principal du footer */
+        .footer-container {
+            display: flex;
+            justify-content: space-around; /* Espace entre les colonnes */
+            align-items: flex-start; /* Aligne les colonnes en haut */
+            flex-wrap: wrap; /* Permet le retour à la ligne sur petits écrans */
+            margin-bottom: 20px;
+        }
+
+        /* Section individuelle */
+        .footer-section {
+            max-width: 300px; /* Limite la largeur des sections */
+            padding: 10px 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FEA116; /* Couleur orange */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .footer-section p:hover {
+            color: #fadaa3;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* Bas de page */
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #ddd; /* Ligne de séparation */
+            padding-top: 10px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span class="nav-title">LES TABLES DE K</span>
+        </div>
+        <div class="nav-center">
+            <a href="projet2.html">Accueil</a>
+            <a href="projet2.html">À Propos</a>
+            <a href="menu_prj.html">Menu</a>
+            <a href="reservation_prj.html">Réservation</a>
+            <a href="clients_prj.html">Avis des clients</a>
+            <a href="contact_prj.html">Contact</a>
+        </div>
+    </nav>
+    <header id="header">
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Contactez Nous</h1>
+            </div>
+        </section>
+    </header>
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h2>Contactez-nous pour toute demande de renseignements</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-left">
+                    <div class="map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.861778604666!2d-7.630111584887791!3d33.59357374798716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafec0ef2ad4f1b%3A0x0!2sGauthier%2C%20Casablanca%2C%20Morocco!5e0!3m2!1sen!2sus!4v1689813655666!5m2!1sen!2sus"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Votre Nom" required>
+                            <input type="email" name="email" placeholder="Votre Email" required>
+                        </div>
+                        <input type="text" name="subject" placeholder="Sujet" required>
+                        <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                        <button type="submit">Envoyer Le Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section contact">
+                <h3>--Contact--</h3>
+                <p>📍 Adresse : Rue Jean Jaurès, Gauthier</p>
+                <p>📞 Téléphone : +212 521092797</p>
+                <p>📧 Email : contact@restaurant.com</p>
+            </div>
+    
+            <div class="footer-section hours">
+                <h3>--Horaires--</h3>
+                <p>🕒 Lundi - Vendredi : 12h - 22h</p>
+                <p>🕒 Samedi - Dimanche : 14h - 23h</p>
+            </div>
+    
+            <div class="footer-section social">
+                <h3>--Suivez-nous--</h3>
+                <p>📷 Instagram | 📘 Facebook | 🐦 Twitter</p>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2024 Restaurant Délicieux. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

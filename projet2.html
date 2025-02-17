@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  #FFF8E7;
+            color: #333;
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: #172445;
+            padding: 15px 30px; 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-title {
+            color: #FEA116;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 0;
+            font-family: Cambria, Cochin, Georgia, Times, 
+            'Times New Roman', serif;
+            font-style: oblique;
+        }
+
+        .nav-center {
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center; 
+            gap: 15px; 
+        }
+
+        .nav-center a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .nav-center a:hover {
+            transform: scale(1.1);
+            color: #FEA116;
+        }
+        
+
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            height: 100vh;
+            background-color: #0F172B;
+            background-image: url('background3.avif'); 
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            position: relative;
+            overflow: hidden;
+            background-blend-mode: overlay;
+        }
+
+        .welcome-text {
+            max-width: 50%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 
+            'Trebuchet MS', sans-serif;
+            animation: fadeInPage 0.6s ease-in-out;
+        }
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+                transform: translateY(40px); 
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+        .welcome-text h1 {
+            font-size: 3rem;
+            line-height: 1.3;
+            color: #ffffff;
+        }
+
+        .welcome-text h1 span {
+            color: #FEA116;
+        }
+
+        .welcome-text p {
+            margin-top: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #bbbbbb;
+            font-style: italic;
+        }
+
+        .welcome-text .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #FEA116;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .welcome-text .btn:hover {
+            background-color: #f6c986;
+        }
+
+        .welcome-image img {
+            max-width: 1000px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            max-height: 500px;
+            border-radius: 700px;
+            cursor: pointer;
+            animation: rotateInfinite 20s linear infinite;
+        }
+
+        @keyframes rotateInfinite {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        section {
+            padding: 50px 20px;
+            text-align: center;
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .about-section {
+            display: flex;
+            padding: 50px;
+            align-items: center;
+            gap: 50px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            grid-template-rows: repeat(2, auto); 
+            gap: 10px; 
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .img1 {
+            width: 250px;
+            height: 250px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease;
+            margin: 0px;
+            grid-row: 1;          
+            justify-self: right;  
+            justify-self: end;
+            align-self: flex-end;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Réduit */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* Taille normale */
+            }
+        }
+        .img1:hover {
+            transform:  scale(0.95);
+        }
+
+        .img2 {
+            transition:  transform 0.4s ease;
+            width: 330px;
+            height: 330px;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Réduit */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* Taille normale */
+            }
+        }
+        .img2:hover {
+            transform: scale(0.95);
+        }
+
+        .img3 {
+            transition: transform 0.4s ease;
+            width: 330px;
+            height: 330px;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Réduit */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* Taille normale */
+            }
+        }
+        .img3:hover {
+            transform: scale(0.95);
+        }
+        .img4 {
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            width: 250px;
+            height: 250px;
+            justify-self: left;  
+            justify-self: left;
+            align-self: flex-start;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Réduit */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* Taille normale */
+            }
+        }
+        .img4:hover {
+            opacity: 1;
+            transform: scale(0.95);
+        }
+        .about-text {
+            max-width: 400px;
+        }
+
+        .about-title span {
+            color: #E67E22;
+            font-style: italic;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        h3{
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FEA116;
+            font-style: italic;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .highlight {
+            color: #E67E22;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            gap: 50px;
+            margin: 30px 0;
+        }
+
+        .stat .number {
+            font-size: 3rem;
+            color: #E67E22;
+            font-weight: bold;
+        }
+
+        .read-more {
+            padding: 12px 25px;
+            background: #E67E22;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .read-more:hover {
+            transform: scale(1.1);
+            background: #D35400;
+        }
+        .menu-item {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            width: 250px;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            
+        }
+        .menu-item img {
+            max-width: 200px; 
+            max-height: 150px;
+            margin-right: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin: 25px;
+            
+        }
+        .menu-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #4A4A4A;
+            text-transform: capitalize;
+        }
+        .menu-item p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #5F6A6A;
+            font-style: italic;
+        }
+        .menu-item img:hover {
+            transform: scale(1.05); 
+        }
+
+        .menu-item:hover h3, 
+        .menu-item:hover p {
+            color: #ff5722; 
+            transition: color 0.2s ease; 
+            cursor: pointer;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #FEA116;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #f6c986;
+        }
+        form {
+            background-color: #0F172B;
+            padding: 15px;
+            border: 1px solid #ddd;
+            max-width: 600px;
+            height: 600px;
+            margin: 40px auto;
+            color: #ddd;
+            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+            gap: 20px;
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        form label{
+            text-align: center;
+            margin: 0px ;
+            padding: 20px;
+        }
+        form input, form select, form button {
+            width: 70%;
+            margin: 4px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        form button {
+            background-color:#FEA116;
+            color: #f9f6f4;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin: 20px;
+            font-style: italic;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        form button:hover {
+            background-color: #fcbc5c;
+        }
+
+        .testimonial-section {
+            padding: 50px;
+        }
+
+        .title {
+            color: #e76f51;
+            font-style: italic;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Slider défilant en boucle */
+        .testimonial-slider {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: calc(320px * 10); /* Assez large pour les doublons et l'effet infini */
+            animation: infinite-scroll 15s linear infinite;
+        }
+
+        /* Animation infinie */
+        @keyframes infinite-scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-320px * 5)); /* Défilement de toutes les cartes */
+            }
+        }
+
+        .testimonial-box {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #FEA116;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .client-info img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .client-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .client-info p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        footer {
+            background: linear-gradient(140deg, #0F172B, #192648); 
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 50px 50px 0 0;
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px); 
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); 
+            }
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around; 
+            align-items: flex-start; 
+            flex-wrap: wrap; 
+            margin-bottom: 20px;
+        }
+        .footer-section {
+            max-width: 300px; 
+            padding: 10px 20px;
+            text-align: left;
+        }
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FEA116; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+        .footer-section p:hover {
+            color: #fadaa3;
+            transition: color 0.3s ease-in-out;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #ddd; 
+            padding-top: 10px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        .footer-bottom p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <span class="nav-title">LES TABLES DE K</span>
+        </div>
+        <div class="nav-center">
+            <a href="#header">Accueil</a>
+            <a href="#àpropos">À Propos</a>
+            <a href="menu_prj.html">Menu</a>
+            <a href="reservation_prj.html">Réservation</a>
+            <a href="clients_prj.html">Avis des clients</a>
+            <a href="contact_prj.html">Contact</a>
+        </div>
+    </nav>
+
+    <header id="header">
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Découvrez<br><span>Nos Délicieux Plats</span></h1>
+                <p>
+                    "Dégustez des plats délicieux dans une ambiance conviviale. 
+                    Ici, chaque moment est un plaisir."
+                </p>
+                <a href="#reservation" class="btn">RÉSERVEZ UNE TABLE</a>
+            </div>
+            <div class="welcome-image">
+                <img src="la kari2.jpg" alt="Delicious grilled food">
+            </div>
+        </section>
+    </header>
+    
+    <section id="àpropos">
+    <section class="about-section">
+            <div class="image-grid">
+                <img src="about-1.jpg" alt="Restaurant 1" class="img1">
+                <img src="about-2.jpg" alt="Restaurant 2" class="img2">
+                <img src="about-3.jpg" alt="Plat 1" class="img3">
+                <img src="about-4.jpg" alt="Plat 2" class="img4">
+            </div>
+    
+            <div class="about-text">
+                <h3 class="about-title"><span>À Propos de Nous</span></h3>
+                <h1>Bienvenue chez <span class="highlight">Les Tables De K</span></h1>
+                <p>
+                    Depuis plus d'une décennie, nous nous efforçons de vous offrir une 
+                    expérience culinaire inoubliable. 
+                    Avec une passion pour la gastronomie, notre équipe combine des ingrédients 
+                    frais et des recettes uniques pour créer des plats qui séduisent tous les sens.
+                </p>
+                <p>
+                    Que ce soit pour une soirée romantique, un déjeuner entre amis ou une 
+                    célébration spéciale, notre restaurant est l'endroit idéal pour 
+                    partager des moments mémorables. 
+                    Nous nous engageons à vous offrir non seulement de délicieux repas, 
+                    mais aussi une ambiance chaleureuse et accueillante.
+                </p>
+        
+                <div class="stats">
+                    <div class="stat">
+                        <span class="number">15+</span>
+                        <p>Années d'<strong>EXPÉRIENCE</strong></p>
+                    </div>
+                    <div class="stat">
+                        <span class="number">50+</span>
+                        <p><strong>CHEFS</strong> Talentueux</p>
+                    </div>
+                    <div class="stat">
+                        <span class="number">10K+</span>
+                        <p>Clients <strong>Satisfaits</strong></p>
+                    </div>
+                </div>
+        
+                <button class="read-more">En savoir plus</button>
+            </div>
+    </section>
+    <section id="menu">
+        <h2>Notre Menu</h2>
+        <div class="menu-item">
+            <img src="carbonara.jpg" alt="Pâte Carbonara">
+            <h3>Pâte Carbonara</h3>
+            <p>75 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="bolognaise.jpg" alt="Pâte Bolognaise">
+            <h3>Pâte Bolognaise</h3>
+            <p>69 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="alfredo.jpg" alt="Pâte Alfredo">
+            <h3>Pâte Alfredo</h3>
+            <p>65 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="slmn.jpg" alt="Pâte Salmon">
+            <h3>Pâte Salmon</h3>
+            <p>100 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="marga 2.webp" alt="Pizza Margherita">
+            <h3>Pizza Margherita</h3>
+            <p>35 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="tun.webp" alt="Pizza Tunara">
+            <h3>Pizza Tunara</h3>
+            <p>45 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="frrm.webp" alt="Pizza Fruit De Mer">
+            <h3>Pizza Fruit De Mer</h3>
+            <p>95 Dhs</p>
+        </div>   
+        <div class="menu-item">
+            <img src="pepp2.jpg" alt="Pizza Pepperoni">
+            <h3>Pizza Pepperoni</h3>
+            <p>60 Dhs</p>
+        </div> 
+        <div class="menu-item">
+            <img src="trms.jpg" alt="Tiramisu">
+            <h3>Tiramisu</h3>
+            <p>30 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="trms chn.jpg" alt="tiramisu choco noir ">
+            <h3>Tiramisu Chocolat Noir</h3>
+            <p>35 Dhs</p>
+        </div>
+        <div class="menu-item">
+            <img src="trms pst.jpg" alt="tiramisu Pistache ">
+            <h3>Tiramisu Pistache</h3>
+            <p>45 Dhs</p>
+        </div><br>
+        <a href="menu_prj.html" class="btn">VOIR PLUS</a>
+    </section>
+    <section id="reservation">
+        <h2>Réservation</h2>
+        <h3>Réserver une table</h3>
+        <form action="/reservation" method="post">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Votre email" required> 
+
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone" required>
+
+            <label for="date">Date :</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Heure :</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Nombre de personnes :</label> 
+            <select id="guests" name="guests" required> 
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6+</option>
+            </select>
+
+            <button type="submit">Envoyer</button>
+            <button type="reset">Réinitialiser</button>
+        </form>
+    </section>
+    <section id="avis-clients">
+        <h2>Avis des Clients</h2>
+        <h3>Voici ce que nos clients disent.</h3> <br><br>
+        <div class="Avis des clients">
+            <div class="testimonial-slider" id="slider">
+                <div class="testimonial-box">
+                    <p>"Une expérience culinaire inoubliable, tout simplement parfait!" </p>
+                    <div class="client-info">
+                        <h4>Client 1</h4>
+                    </div>
+                </div>
+                <div class="testimonial-box">
+                    <p>"Des saveurs authentiques et un accueil chaleureux!"</p>
+                    <div class="client-info">
+                        <h4>Client 2</h4>
+                    </div>
+                </div>
+                <div class="testimonial-box">
+                    <p>"Un lieu où la gastronomie rime avec excellence."</p>
+                    <div class="client-info">
+                        <h4>Client 3</h4>
+                    </div>
+                </div>
+                <div class="testimonial-box">
+                    <p>"Très bon rapport qualité-prix."</p>
+                    <div class="client-info">
+                        <h4>Client 4</h4>
+                    </div>
+                </div>
+
+                <div class="testimonial-box">
+                    <p>"Chaque plat est un délice pour les yeux." </p>
+                    <div class="client-info">
+                        <h4>Client 5</h4>
+                    </div>
+                </div>
+                <div class="testimonial-box">
+                    <p>"Un service impeccable et des saveurs mémorables."</p>
+                    <div class="client-info">
+                        <h4>Client 6</h4>
+                    </div>
+                </div>
+                <div class="testimonial-box">
+                    <p>"Service impeccable, très professionnel."</p>
+                    <div class="client-info">
+                        <h4>Client 1</h4>
+                    </div>
+                </div>
+
+                <div class="testimonial-box">
+                    <p>"Support réactif et à l'écoute."</p>
+                    <div class="client-info">
+                        <h4>Client 2</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><br><br>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section contact">
+                    <h3>--Contact--</h3>
+                    <p>📍 Adresse : Rue Jean Jaurès, Gauthier</p>
+                    <p>📞 Téléphone : +212 521092797</p>
+                    <p>📧 Email : contact@restaurant.com</p>
+                </div>
+        
+                <div class="footer-section hours">
+                    <h3>--Horaires--</h3>
+                    <p>🕒 Lundi - Vendredi : 12h - 22h</p>
+                    <p>🕒 Samedi - Dimanche : 14h - 23h</p>
+                </div>
+        
+                <div class="footer-section social">
+                    <h3>--Suivez-nous--</h3>
+                    <p>📷 Instagram | 📘 Facebook | 🐦 Twitter</p>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>&copy; 2024 Restaurant Délicieux. Tous droits réservés.</p>
+            </div>
+        </footer>
+</body>
+</html>
